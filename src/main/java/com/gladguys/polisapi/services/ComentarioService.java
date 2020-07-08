@@ -6,6 +6,7 @@ import com.gladguys.polisapi.repositories.ComentarioRepository;
 import com.gladguys.polisapi.repositories.SubComentarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class ComentarioService {
     }
 
     public Comentario salvar(Comentario comentario) {
+        comentario.setDiaHora(LocalDateTime.now());
         return this.comentarioRepository.save(comentario);
     }
 
@@ -29,6 +31,7 @@ public class ComentarioService {
     }
 
     public SubComentario salvarSubComentario(SubComentario subComentario) {
+        subComentario.setDiaHora(LocalDateTime.now());
         return this.subComentarioRepository.save(subComentario);
     }
 

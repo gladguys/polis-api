@@ -1,20 +1,17 @@
-package com.gladguys.polisapi.models;
+package com.gladguys.polisapi.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gladguys.polisapi.models.Comentario;
 import lombok.Data;
-import org.springframework.context.annotation.Lazy;
 
-import javax.persistence.*;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Entity
 @Data
-public class SubComentario {
+public class SubComentarioDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String texto;
@@ -27,8 +24,8 @@ public class SubComentario {
 
     private String postId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Comentario comentarioPai;
-
     private boolean foiEditado;
+
+    private int qntSubComentarios;
+
 }

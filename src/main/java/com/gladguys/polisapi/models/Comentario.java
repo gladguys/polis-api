@@ -20,7 +20,7 @@ public class Comentario {
 
     private String usuarioNome;
 
-    private String diaHora;
+    private LocalDateTime diaHora;
 
     private String postId;
 
