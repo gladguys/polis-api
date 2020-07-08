@@ -24,4 +24,6 @@ public class Comentario {
 
     private String postId;
 
+    private boolean foiEditado;
+
 }

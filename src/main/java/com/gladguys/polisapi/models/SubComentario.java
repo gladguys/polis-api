@@ -30,4 +30,6 @@ public class SubComentario {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
     private Comentario comentarioPai;
+
+    private boolean foiEditado;
 }
