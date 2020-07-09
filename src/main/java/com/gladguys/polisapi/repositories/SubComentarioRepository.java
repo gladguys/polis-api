@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SubComentarioRepository extends JpaRepository<SubComentario, Long> {
-
+public interface SubComentarioRepository extends JpaRepository<SubComentario, Long>, CustomSubComentarioRepository {
     List<SubComentario> findByComentarioPaiId(Long comentarioId);
 }

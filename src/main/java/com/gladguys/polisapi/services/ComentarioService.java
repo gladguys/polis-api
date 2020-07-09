@@ -37,7 +37,6 @@ public class ComentarioService {
     }
 
     public List<SubComentario> buscarSubComentariosDeComentario(Long comentarioId) {
-
         return this.subComentarioRepository.findByComentarioPaiId(comentarioId);
     }
 }
