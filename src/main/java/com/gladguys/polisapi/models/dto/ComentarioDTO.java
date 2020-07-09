@@ -1,11 +1,16 @@
 package com.gladguys.polisapi.models.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gladguys.polisapi.models.Comentario;
 import lombok.Data;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Data
-public class SubComentarioDTO {
+public class ComentarioDTO {
 
     private Long id;
 
@@ -21,5 +26,5 @@ public class SubComentarioDTO {
 
     private boolean foiEditado;
 
-    private Long comentarioPaiId;
+    private int qntSubComentarios;
 }
