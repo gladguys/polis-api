@@ -3,6 +3,7 @@ package com.gladguys.polisapi.services;
 import com.gladguys.polisapi.models.Comentario;
 import com.gladguys.polisapi.models.SubComentario;
 import com.gladguys.polisapi.models.dto.ComentarioDTO;
+import com.gladguys.polisapi.models.dto.SubComentarioDTO;
 import com.gladguys.polisapi.repositories.ComentarioRepository;
 import com.gladguys.polisapi.repositories.SubComentarioRepository;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class ComentarioService {
         return this.subComentarioRepository.save(subComentario);
     }
 
-    public List<SubComentario> buscarSubComentariosDeComentario(Long comentarioId) {
-        return this.subComentarioRepository.findByComentarioPaiId(comentarioId);
+    public List<SubComentarioDTO> buscarSubComentariosDeComentario(Long comentarioId) {
+        return this.subComentarioRepository.getSubComentariosByComentarioId(comentarioId);
     }
 }
