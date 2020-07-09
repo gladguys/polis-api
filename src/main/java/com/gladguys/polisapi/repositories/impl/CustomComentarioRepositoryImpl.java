@@ -1,6 +1,7 @@
 package com.gladguys.polisapi.repositories.impl;
 
 import com.gladguys.polisapi.models.dto.ComentarioDTO;
+import com.gladguys.polisapi.models.dto.SubComentarioDTO;
 import com.gladguys.polisapi.repositories.CustomComentarioRepository;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,5 +28,15 @@ public class CustomComentarioRepositoryImpl implements CustomComentarioRepositor
                 .append(" GROUP BY (c.id) ");
 
         return this.jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(ComentarioDTO.class));
+    }
+
+    @Override
+    public List<SubComentarioDTO> getSubComentariosByComentarioId(Long comentarioId) {
+
+        StringBuilder sql = new StringBuilder();
+        sql.append(" SELECT * FROM sub_comentario ")
+                .append(" WHERE comentario_pai_id = ").append(comentarioId);
+
+        return this.jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(SubComentarioDTO.class));
     }
 }
