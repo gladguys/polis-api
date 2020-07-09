@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Data
-public class SubComentarioDTO {
+public class ComentarioDTO {
 
     private Long id;
 
@@ -25,7 +25,5 @@ public class SubComentarioDTO {
     private String postId;
 
     private boolean foiEditado;
-
-    private int qntSubComentarios;
 
 }
