@@ -23,7 +23,7 @@ public class CustomComentarioRepositoryImpl implements CustomComentarioRepositor
         StringBuilder sql = new StringBuilder();
         sql.append(" SELECT count(sc.*) as qntSubComentarios, c.* FROM comentario c ")
                 .append(" LEFT JOIN sub_comentario sc on c.id = sc.comentario_pai_id ")
-                .append(" WHERE c.post_id = ").append(postId)
+                .append(" WHERE c.post_id = ").append(" '" + postId + "'")
                 .append(" GROUP BY (c.id) ");
 
         return this.jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(ComentarioDTO.class));

@@ -26,4 +26,5 @@ public class ComentarioDTO {
 
     private boolean foiEditado;
 
+    private int qntSubComentarios;
 }
