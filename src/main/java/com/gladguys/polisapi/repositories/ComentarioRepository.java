@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, Long>, CustomComentarioRepository {
-
     List<Comentario> findByPostId(String postId);
 }
