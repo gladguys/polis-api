@@ -29,14 +29,4 @@ public class CustomComentarioRepositoryImpl implements CustomComentarioRepositor
 
         return this.jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(ComentarioDTO.class));
     }
-
-    @Override
-    public List<SubComentarioDTO> getSubComentariosByComentarioId(Long comentarioId) {
-
-        StringBuilder sql = new StringBuilder();
-        sql.append(" SELECT * FROM sub_comentario ")
-                .append(" WHERE comentario_pai_id = ").append(comentarioId);
-
-        return this.jdbcTemplate.query(sql.toString(), new BeanPropertyRowMapper<>(SubComentarioDTO.class));
-    }
 }

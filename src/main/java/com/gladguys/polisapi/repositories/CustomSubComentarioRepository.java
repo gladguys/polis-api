@@ -5,6 +5,6 @@ import com.gladguys.polisapi.models.dto.SubComentarioDTO;
 
 import java.util.List;
 
-public interface CustomComentarioRepository {
-    List<ComentarioDTO> getComentariosByPostId(String postId);
+public interface CustomSubComentarioRepository {
+    List<SubComentarioDTO> getSubComentariosByComentarioId(Long comentarioId);
 }
