@@ -32,9 +32,15 @@ public class ComentarioService {
         return this.comentarioRepository.getComentariosByPostId(postId);
     }
 
-    public SubComentario salvarSubComentario(SubComentario subComentario) {
-        subComentario.setDiaHora(LocalDateTime.now());
-        return this.subComentarioRepository.save(subComentario);
+    public SubComentarioDTO salvarSubComentario(SubComentarioDTO subComentarioDTO) throws Exception {
+        SubComentario subComentario = subComentarioDTO.toEntity();
+        SubComentario subComentarioSalvo;
+
+        if (subComentario.getId() != null) subComentarioSalvo = atualizarSubComentario(subComentario);
+        else subComentarioSalvo = criarSubComentario(subComentario);
+
+        if (subComentarioSalvo != null) return subComentarioSalvo.toDTO();
+        else throw new Exception();
     }
 
     public List<SubComentarioDTO> buscarSubComentariosDeComentario(Long comentarioId) {
@@ -50,5 +56,16 @@ public class ComentarioService {
         comentario.setDiaHora(LocalDateTime.now());
         comentario.setFoiEditado(true);
         return this.comentarioRepository.save(comentario);
+    }
+
+    private SubComentario criarSubComentario (SubComentario subComentario) {
+        subComentario.setDiaHora(LocalDateTime.now());
+        return this.subComentarioRepository.save(subComentario);
+    }
+
+    private SubComentario atualizarSubComentario(SubComentario subComentario) {
+        subComentario.setDiaHora(LocalDateTime.now());
+        subComentario.setFoiEditado(true);
+        return this.subComentarioRepository.save(subComentario);
     }
 }
