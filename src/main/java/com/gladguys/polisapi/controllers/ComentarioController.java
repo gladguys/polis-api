@@ -26,8 +26,21 @@ public class ComentarioController {
         return ResponseEntity.ok(comentarioSalvo);
     }
 
+    @PutMapping
+    public ResponseEntity<Comentario> editar(@RequestBody Comentario comentario) {
+        Comentario comentarioSalvo = comentarioService.salvar(comentario);
+        return ResponseEntity.ok(comentarioSalvo);
+    }
+
     @PostMapping(value = "/{comentarioId}/subs")
     public ResponseEntity<SubComentario> salvarSubComentario(@PathVariable("comentarioId") Long comentarioId,
+                                                             @RequestBody SubComentario subComentario) {
+        SubComentario comentarioSalvo = comentarioService.salvarSubComentario(subComentario);
+        return ResponseEntity.ok(comentarioSalvo);
+    }
+
+    @PostMapping(value = "/{comentarioId}/subs")
+    public ResponseEntity<SubComentario> editarSubComentario(@PathVariable("comentarioId") Long comentarioId,
                                                              @RequestBody SubComentario subComentario) {
         SubComentario comentarioSalvo = comentarioService.salvarSubComentario(subComentario);
         return ResponseEntity.ok(comentarioSalvo);
