@@ -33,17 +33,17 @@ public class ComentarioController {
     }
 
     @PostMapping(value = "/{comentarioId}/subs")
-    public ResponseEntity<SubComentario> salvarSubComentario(@PathVariable("comentarioId") Long comentarioId,
-                                                             @RequestBody SubComentario subComentario) {
-        SubComentario comentarioSalvo = comentarioService.salvarSubComentario(subComentario);
-        return ResponseEntity.ok(comentarioSalvo);
+    public ResponseEntity<SubComentarioDTO> salvarSubComentario(@PathVariable("comentarioId") Long comentarioId,
+                                                             @RequestBody SubComentarioDTO subComentarioDTO) throws Exception {
+        SubComentarioDTO subComentarioDTOSalvo = comentarioService.salvarSubComentario(subComentarioDTO);
+        return ResponseEntity.ok(subComentarioDTOSalvo);
     }
 
-    @PostMapping(value = "/{comentarioId}/subs")
-    public ResponseEntity<SubComentario> editarSubComentario(@PathVariable("comentarioId") Long comentarioId,
-                                                             @RequestBody SubComentario subComentario) {
-        SubComentario comentarioSalvo = comentarioService.salvarSubComentario(subComentario);
-        return ResponseEntity.ok(comentarioSalvo);
+    @PutMapping(value = "/{comentarioId}/subs")
+    public ResponseEntity<SubComentarioDTO> editarSubComentario(@PathVariable("comentarioId") Long comentarioId,
+                                                             @RequestBody SubComentarioDTO subComentarioDTO) throws Exception {
+        SubComentarioDTO subComentarioDTOSalvo = comentarioService.salvarSubComentario(subComentarioDTO);
+        return ResponseEntity.ok(subComentarioDTOSalvo);
     }
 
     @GetMapping
