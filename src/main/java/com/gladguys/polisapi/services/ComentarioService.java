@@ -17,8 +17,8 @@ public class ComentarioService {
     private ComentarioRepository comentarioRepository;
     private SubComentarioRepository subComentarioRepository;
 
-
-    public ComentarioService(ComentarioRepository comentarioRepository, SubComentarioRepository subComentarioRepository) {
+    public ComentarioService(ComentarioRepository comentarioRepository,
+                             SubComentarioRepository subComentarioRepository) {
         this.comentarioRepository = comentarioRepository;
         this.subComentarioRepository = subComentarioRepository;
     }
