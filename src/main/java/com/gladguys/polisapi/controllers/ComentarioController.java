@@ -29,7 +29,6 @@ public class ComentarioController {
     @PostMapping(value = "/{comentarioId}/subs")
     public ResponseEntity<SubComentario> salvarSubComentario(@PathVariable("comentarioId") Long comentarioId,
                                                              @RequestBody SubComentario subComentario) {
-
         SubComentario comentarioSalvo = comentarioService.salvarSubComentario(subComentario);
         return ResponseEntity.ok(comentarioSalvo);
     }
