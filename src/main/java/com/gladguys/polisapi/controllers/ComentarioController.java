@@ -35,13 +35,13 @@ public class ComentarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ComentarioDTO>> ComentariosDaAtividade(@RequestParam("postId") String postId) {
+    public ResponseEntity<List<ComentarioDTO>> buscarComentariosDoPost(@RequestParam("postId") String postId) {
         List<ComentarioDTO> comentarios = comentarioService.buscarComentariosPorPostId(postId);
         return ResponseEntity.ok(comentarios);
     }
 
     @GetMapping("/{comentarioId}/subs")
-    public ResponseEntity<List<SubComentarioDTO>> subComentariosDoComentario(@PathVariable("comentarioId") Long comentarioId) {
+    public ResponseEntity<List<SubComentarioDTO>> buscarSubcomentariosDoComentario(@PathVariable("comentarioId") Long comentarioId) {
         List<SubComentarioDTO> subComentarios = comentarioService.buscarSubComentariosDeComentario(comentarioId);
         return ResponseEntity.ok(subComentarios);
     }
