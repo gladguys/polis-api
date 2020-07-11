@@ -1,13 +1,10 @@
 package com.gladguys.polisapi.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gladguys.polisapi.models.dto.SubComentarioDTO;
 import lombok.Data;
-import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -31,4 +28,17 @@ public class SubComentario {
     private Comentario comentarioPai;
 
     private boolean foiEditado;
+
+    public SubComentarioDTO toDTO() {
+        SubComentarioDTO subComentarioDTO = new SubComentarioDTO();
+        subComentarioDTO.setId(id);
+        subComentarioDTO.setComentarioPaiId(comentarioPai.getId());
+        subComentarioDTO.setDiaHora(diaHora);
+        subComentarioDTO.setTexto(texto);
+        subComentarioDTO.setPostId(postId);
+        subComentarioDTO.setUsuarioNome(usuarioNome);
+        subComentarioDTO.setFoiEditado(foiEditado);
+        subComentarioDTO.setUsuarioId(usuarioId);
+        return subComentarioDTO;
+    }
 }
