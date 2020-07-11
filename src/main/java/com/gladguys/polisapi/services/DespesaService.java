@@ -19,4 +19,8 @@ public class DespesaService {
         cotas.stream().forEach(c -> c.addSiglaUF());
         this.cotaEstadoRepository.saveAll(cotas);
     }
+
+    public CotaEstado buscarTotalMensalCotaPorEstado(String siglaUF) {
+        return this.cotaEstadoRepository.findBySiglaUF(siglaUF);
+    }
 }

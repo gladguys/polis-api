@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CotaEstadoRepository extends JpaRepository<CotaEstado, Long> {}
+public interface CotaEstadoRepository extends JpaRepository<CotaEstado, Long> {
+    CotaEstado findBySiglaUF(String siglaUF);
+}
