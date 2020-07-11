@@ -58,6 +58,14 @@ public class ComentarioService {
         return this.comentarioRepository.save(comentario);
     }
 
+    public void deletarComentarioById(Long comentarioId) {
+        this.comentarioRepository.deleteById(comentarioId);
+    }
+
+    public void deletarSubComentarioById(Long subId) {
+        this.subComentarioRepository.deleteById(subId);
+    }
+
     private SubComentario criarSubComentario (SubComentario subComentario) {
         subComentario.setDiaHora(LocalDateTime.now());
         return this.subComentarioRepository.save(subComentario);
