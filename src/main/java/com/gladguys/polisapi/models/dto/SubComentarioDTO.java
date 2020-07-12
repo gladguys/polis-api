@@ -1,17 +1,12 @@
-package com.gladguys.polisapi.models;
+package com.gladguys.polisapi.models.dto;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Entity
 @Data
-public class Comentario {
+public class SubComentarioDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String texto;
@@ -26,4 +21,5 @@ public class Comentario {
 
     private boolean foiEditado;
 
+    private Long comentarioPaiId;
 }

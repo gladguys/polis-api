@@ -2,6 +2,8 @@ package com.gladguys.polisapi.controllers;
 
 import com.gladguys.polisapi.models.Comentario;
 import com.gladguys.polisapi.models.SubComentario;
+import com.gladguys.polisapi.models.dto.ComentarioDTO;
+import com.gladguys.polisapi.models.dto.SubComentarioDTO;
 import com.gladguys.polisapi.services.ComentarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,14 +35,14 @@ public class ComentarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Comentario>> ComentariosDaAtividade(@RequestParam("postId") String postId) {
-        List<Comentario> comentarios = comentarioService.buscarComentariosPorPostId(postId);
+    public ResponseEntity<List<ComentarioDTO>> ComentariosDaAtividade(@RequestParam("postId") String postId) {
+        List<ComentarioDTO> comentarios = comentarioService.buscarComentariosPorPostId(postId);
         return ResponseEntity.ok(comentarios);
     }
 
     @GetMapping("/{comentarioId}/subs")
-    public ResponseEntity<List<SubComentario>> subComentariosDoComentario(@PathVariable("comentarioId") Long comentarioId) {
-        List<SubComentario> subComentarios = comentarioService.buscarSubComentariosDeComentario(comentarioId);
+    public ResponseEntity<List<SubComentarioDTO>> subComentariosDoComentario(@PathVariable("comentarioId") Long comentarioId) {
+        List<SubComentarioDTO> subComentarios = comentarioService.buscarSubComentariosDeComentario(comentarioId);
         return ResponseEntity.ok(subComentarios);
     }
 }
