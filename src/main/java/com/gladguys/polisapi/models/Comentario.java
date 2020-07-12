@@ -1,6 +1,8 @@
 package com.gladguys.polisapi.models;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -26,4 +28,6 @@ public class Comentario {
 
     private boolean foiEditado;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comentarioPai", cascade = CascadeType.REMOVE, orphanRemoval=true)
+    private List<SubComentario> subComentarios;
 }
