@@ -1,5 +1,6 @@
 package com.gladguys.polisapi.controllers;
 
+import com.gladguys.polisapi.clientScraping.PolisScraping;
 import com.gladguys.polisapi.models.CotaEstado;
 import com.gladguys.polisapi.services.DespesaService;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,17 @@ import java.util.List;
 public class DespesasController {
 
     private DespesaService despesaService;
+    private PolisScraping clientPolisScraping;
 
-    public DespesasController(DespesaService despesaService) {
+    public DespesasController(DespesaService despesaService, PolisScraping clientPolisScraping) {
         this.despesaService = despesaService;
+        this.clientPolisScraping = clientPolisScraping;
     }
 
     @PostMapping(value = "/cota/total-estado")
-    public ResponseEntity salvarTotalCotasPorEstado(@RequestBody List<CotaEstado> cotas) {
+    public ResponseEntity salvarTotalCotasPorEstado() {
         try {
+            List<CotaEstado> cotas = this.clientPolisScraping.getCotasPorEstado();
             this.despesaService.salvarCotasEstado(cotas);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
