@@ -10,13 +10,18 @@ import java.util.List;
 @Component
 public class PolisScraping {
 
+    private PolisScrapingClientCreator polisScrapingClientCreator;
+    private ClientRequestExecutor clientRequestExecutor;
+
+    public PolisScraping(PolisScrapingClientCreator polisScrapingClientCreator, ClientRequestExecutor clientRequestExecutor) {
+        this.polisScrapingClientCreator = polisScrapingClientCreator;
+        this.clientRequestExecutor = clientRequestExecutor;
+    }
+
     public List<CotaEstado> getCotasPorEstado() {
-        WebClient client = WebClient.create("http://localhost:8081");
-        CotasEstadosList cotasEstadosList = client.method(HttpMethod.GET)
-                .uri("/cotas/cota-estados")
-                .retrieve()
-                .bodyToMono(CotasEstadosList.class)
-                .block();
+        WebClient client = polisScrapingClientCreator.create();
+        CotasEstadosList cotasEstadosList =
+                clientRequestExecutor.execute(client, HttpMethod.GET, "/cotas/cota-estados", CotasEstadosList.class);
         return cotasEstadosList.getCotasEstados();
     }
 }
