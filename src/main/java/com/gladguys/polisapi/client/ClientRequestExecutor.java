@@ -1,4 +1,4 @@
-package com.gladguys.polisapi.clientScraping;
+package com.gladguys.polisapi.client;
 
 import com.gladguys.polisapi.models.dto.CotasEstadosList;
 import org.springframework.http.HttpMethod;

@@ -1,4 +1,4 @@
-package com.gladguys.polisapi.clientScraping;
+package com.gladguys.polisapi.client;
 
 import com.gladguys.polisapi.models.CotaEstado;
 import com.gladguys.polisapi.models.dto.CotasEstadosList;
@@ -8,12 +8,12 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.List;
 
 @Component
-public class PolisScraping {
+public class ClientPolisScraping {
 
     private PolisScrapingClientCreator polisScrapingClientCreator;
     private ClientRequestExecutor clientRequestExecutor;
 
-    public PolisScraping(PolisScrapingClientCreator polisScrapingClientCreator, ClientRequestExecutor clientRequestExecutor) {
+    public ClientPolisScraping(PolisScrapingClientCreator polisScrapingClientCreator, ClientRequestExecutor clientRequestExecutor) {
         this.polisScrapingClientCreator = polisScrapingClientCreator;
         this.clientRequestExecutor = clientRequestExecutor;
     }
