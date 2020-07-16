@@ -28,6 +28,6 @@ public class Comentario {
 
     private boolean foiEditado;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comentarioPai", cascade = CascadeType.REMOVE, orphanRemoval=true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comentarioPai", cascade = CascadeType.REMOVE)
     private List<SubComentario> subComentarios;
 }
