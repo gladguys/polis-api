@@ -20,6 +20,8 @@ public class Comentario {
 
     private String usuarioId;
 
+    private String politicoId;
+
     private String usuarioNome;
 
     private LocalDateTime diaHora;
