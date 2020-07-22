@@ -3,6 +3,7 @@ package com.gladguys.polisapi.controllers;
 import com.gladguys.polisapi.models.Comentario;
 import com.gladguys.polisapi.models.dto.ComentarioDTO;
 import com.gladguys.polisapi.models.dto.SubComentarioDTO;
+import com.gladguys.polisapi.services.ComentarioFirestoreService;
 import com.gladguys.polisapi.services.ComentarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,17 @@ import java.util.List;
 public class ComentarioController {
 
     private ComentarioService comentarioService;
+    private ComentarioFirestoreService comentarioFirestoreService;
 
-    public ComentarioController(ComentarioService comentarioService) {
+    public ComentarioController(ComentarioService comentarioService, ComentarioFirestoreService comentarioFirestoreService) {
         this.comentarioService = comentarioService;
+        this.comentarioFirestoreService = comentarioFirestoreService;
     }
 
     @PostMapping
     public ResponseEntity<Comentario> salvar(@RequestBody Comentario comentario) {
         Comentario comentarioSalvo = comentarioService.salvar(comentario);
+        comentarioFirestoreService.incrementarContadorComentarios(comentario);
         return ResponseEntity.ok(comentarioSalvo);
     }
 
